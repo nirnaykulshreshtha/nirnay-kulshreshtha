@@ -1,5 +1,6 @@
 import { IntroSection } from '@/components/intro-section';
 import { ProfileSection } from '@/components/profile-section';
+import { SkillsSectionAlt } from '@/components/skills-section-alt';
 
 /**
  * Home page component showcasing Nirnay's portfolio
@@ -27,6 +28,9 @@ export default function Home() {
 						<ProfileSection />
 					</div>
 				</section>
+
+				{/* Skills & Technologies section */}
+				<SkillsSectionAlt />
 			</div>
 		</main>
 	);
