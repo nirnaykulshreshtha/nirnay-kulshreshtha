@@ -49,16 +49,7 @@ export function SkillsSectionAlt() {
       icon: Monitor,
       color: 'from-blue-500 to-cyan-500',
       skills: [
-        'React.js', 'TypeScript', 'JavaScript', 'Next.js', 'HTML/CSS', 'Tailwind CSS', 'Redux', 'Figma'
-      ]
-    },
-    {
-      id: 'mobile',
-      title: 'Mobile',
-      icon: Smartphone,
-      color: 'from-purple-500 to-pink-500',
-      skills: [
-        'React Native', 'Flutter', 'Dart', 'Android', 'iOS', 'Mobile UI/UX', 'App Store Deployment', 'Mobile Testing'
+        'HTML/CSS', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Redux', 'Context API', 'Material-UI', 'Tailwind CSS', 'Bootstrap', 'SASS/SCSS', 'Shadcn UI', 'Google Lighthouse', 'ARIA roles'
       ]
     },
     {
@@ -67,34 +58,43 @@ export function SkillsSectionAlt() {
       icon: Server,
       color: 'from-green-500 to-emerald-500',
       skills: [
-        'Node.js', 'Python', 'Express.js', 'REST APIs', 'GraphQL', 'Microservices', 'Authentication', 'API Security'
+        'Node.js', 'Express.js', 'PHP', 'Laravel', 'Python', 'Flask', 'RESTful APIs', 'Swagger/OpenAPI', 'JWT Authentication', 'OAuth2', 'MySQL', 'MongoDB'
       ]
     },
     {
-      id: 'database',
-      title: 'Database & Cloud',
-      icon: Database,
-      color: 'from-orange-500 to-red-500',
+      id: 'mobile',
+      title: 'Mobile App',
+      icon: Smartphone,
+      color: 'from-purple-500 to-pink-500',
       skills: [
-        'MongoDB', 'PostgreSQL', 'Firebase', 'AWS', 'Cloud Deployment', 'Database Design', 'Data Modeling', 'Cloud Security'
+        'Flutter', 'React Native', 'Mobile UI/UX', 'App Store Deployment', 'Play Store Deployment', 'Mobile Testing', 'Cross-platform Development', 'Firebase'
       ]
     },
     {
       id: 'devops',
-      title: 'DevOps & Tools',
-      icon: Zap,
+      title: 'DevOps & Deployment',
+      icon: Cloud,
       color: 'from-indigo-500 to-purple-500',
       skills: [
-        'Docker', 'Git/GitHub', 'CI/CD', 'Linux/Ubuntu', 'VS Code', 'Shell Scripting', 'Monitoring', 'Performance Optimization'
+        'GitHub Actions', 'AWS EC2', 'AWS S3', 'AWS RDS', 'AWS Lambda', 'IAM', 'CloudFront', 'S3', 'CloudWatch', 'Sentry', 'CI/CD Pipelines', 'CloudFlare'
+      ]
+    },
+    {
+      id: 'testing',
+      title: 'Testing & Tooling',
+      icon: Shield,
+      color: 'from-orange-500 to-red-500',
+      skills: [
+        'Jest', 'Mocha/Chai', 'ESLint', 'Prettier', 'npm/Yarn', 'Git', 'GitHub', 'GitLab', 'Unit Testing', 'Integration Testing', 'Code Quality'
       ]
     },
     {
       id: 'ai-ml',
-      title: 'AI/ML',
+      title: 'AI/ML Integration',
       icon: Brain,
       color: 'from-teal-500 to-blue-500',
       skills: [
-        'Python ML', 'TensorFlow', 'Data Analysis', 'Machine Learning', 'Deep Learning', 'NLP', 'Computer Vision', 'AI Integration'
+        'OpenAI API', 'AI Integration', 'Prompt Engineering', 'Chatbot Development', 'AI Content Generation', 'Data Processing'
       ]
     }
   ];

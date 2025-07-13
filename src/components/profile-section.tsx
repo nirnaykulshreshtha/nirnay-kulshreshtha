@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { Calendar, Github, Mail, MapPin, Sparkles, Star, MessageCircle } from 'lucide-react';
+import { Calendar, Mail, MapPin, Sparkles, Star } from 'lucide-react';
+import { SiGithub, SiWhatsapp } from '@icons-pack/react-simple-icons';
 import * as motion from "motion/react-client";
 
 /**
@@ -22,7 +23,7 @@ export function ProfileSection() {
 				initial={{ opacity: 0, y: 30, scale: 0.95 }}
 				animate={{ opacity: 1, y: 0, scale: 1 }}
 				transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-				whileHover={{ y: -5, scale: 1.02 }}
+				// whileHover={{ y: -5, scale: 1.02 }}
 			>
 				{/* Animated background elements */}
 				<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 rounded-3xl"></div>
@@ -38,7 +39,7 @@ export function ProfileSection() {
 						transition={{ duration: 0.4, ease: "easeOut" }}
 					>
 						{/* Glowing ring effect */}
-						<div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary rounded-full blur-lg scale-110 animate-pulse opacity-30"></div>
+						<div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary rounded-full blur-lg scale-110 opacity-30"></div>
 						
 						{/* Main image with enhanced styling */}
 						<span className="relative flex shrink-0 overflow-hidden rounded-full size-52 md:size-60 lg:size-64 border-4 border-white/20 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm">
@@ -76,7 +77,7 @@ export function ProfileSection() {
 					>
 						<div className="flex flex-wrap gap-3 justify-center">
 							<motion.span
-								className="px-6 py-3 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full text-sm font-semibold border border-primary/30 hover:from-primary/30 hover:to-secondary/30 transition-all duration-300 cursor-default flex flex-row justify-center items-center gap-3 backdrop-blur-sm shadow-lg"
+								className="px-6 py-1.5 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full text-sm font-semibold border border-primary/30 hover:from-primary/30 hover:to-secondary/30 transition-all duration-300 cursor-default flex flex-row justify-center items-center gap-3 backdrop-blur-sm shadow-lg"
 								initial={{ opacity: 0, scale: 0.8 }}
 								animate={{ opacity: 1, scale: 1 }}
 								transition={{ duration: 0.5, delay: 1.0, ease: "easeOut" }}
@@ -96,9 +97,9 @@ export function ProfileSection() {
 						transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
 					>
 						{[
-							{ icon: Github, href: "https://github.com/nirnaykulshreshtha", label: "GitHub" },
+							{ icon: SiGithub, href: "https://github.com/nirnaykulshreshtha", label: "GitHub" },
 							{ icon: Mail, href: "mailto:nirnaykulshreshtha@gmail.com", label: "Email" },
-							{ icon: MessageCircle, href: "https://wa.me/919807564282", label: "WhatsApp" }
+							{ icon: SiWhatsapp, href: "https://wa.me/919807564282", label: "WhatsApp" }
 						].map((social, index) => (
 							<motion.div
 								key={social.label}

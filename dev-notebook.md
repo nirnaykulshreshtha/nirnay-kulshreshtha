@@ -214,4 +214,84 @@ The project uses custom container utilities defined in `globals.css` using Tailw
 - CSS variables allow easy customization of padding and max-width
 - Responsive variants provide flexibility for different content types
 - All containers maintain consistent horizontal centering and padding behavior
-- Uses Tailwind CSS v4's native utility system instead of custom CSS classes 
+- Uses Tailwind CSS v4's native utility system instead of custom CSS classes
+
+## Footer Component (Latest Update)
+
+### Overview
+Added a comprehensive footer component with theme toggle functionality and modern design elements.
+
+#### Key Features Implemented:
+1. **Theme Toggle Integration**:
+   - Integrated existing ThemeToggle component from `@/components/common/theme-toggle`
+   - Positioned in the "Settings" section for easy access
+   - Maintains consistent styling with the rest of the application
+
+2. **Social Media Links**:
+   - GitHub, LinkedIn, Twitter, and Email links
+   - Accessible button design with proper aria-labels
+   - Hover effects with smooth transitions
+   - Opens in new tabs with proper security attributes
+
+3. **Navigation Links**:
+   - Quick links to About, Skills, Projects, and Contact sections
+   - Smooth hover transitions with color changes
+   - Organized in a dedicated "Quick Links" section
+
+4. **Contact Information**:
+   - Email contact link with hover effects
+   - Professional presentation of contact details
+   - Accessible link structure
+
+5. **Copyright and Legal Links**:
+   - Dynamic year calculation for copyright
+   - Privacy Policy and Terms of Service links
+   - Responsive layout for different screen sizes
+
+#### Technical Implementation:
+- **Component**: `Footer` in `src/components/footer.tsx`
+- **Client Component**: Uses "use client" directive for interactive elements
+- **Responsive Design**: Grid layout that adapts from 1 column (mobile) to 4 columns (desktop)
+- **Accessibility**: Proper ARIA labels, semantic HTML, and keyboard navigation
+- **Performance**: Optimized with minimal re-renders and efficient event handling
+
+#### Design Features:
+- **Glassmorphism Effect**: Backdrop blur with semi-transparent background
+- **Decorative Elements**: Floating gradient orbs for visual interest
+- **Consistent Theming**: Matches the portfolio's design language
+- **Smooth Animations**: Hover effects and transitions throughout
+- **Border Styling**: Subtle border separators with theme-aware colors
+
+#### Component Structure:
+```typescript
+Footer
+├── Brand Section (2 columns on desktop)
+│   ├── Name with gradient text
+│   ├── Description
+│   └── Social Media Links
+├── Quick Links (1 column)
+│   └── Navigation Links
+├── Settings (1 column)
+│   ├── Theme Toggle
+│   └── Contact Information
+└── Bottom Section
+    ├── Copyright
+    └── Legal Links
+```
+
+#### Integration:
+- **Main Page**: Added to `src/app/page.tsx` after the skills section
+- **Layout**: Positioned at the bottom with proper spacing (`mt-32`)
+- **Styling**: Uses existing design system colors and spacing
+
+#### Accessibility Features:
+- **ARIA Labels**: Descriptive labels for all interactive elements
+- **Keyboard Navigation**: All links and buttons are keyboard accessible
+- **Screen Reader Support**: Proper semantic structure and alt text
+- **Focus Indicators**: Visible focus states for all interactive elements
+
+#### Future Enhancements:
+- **Analytics Integration**: Track social media link clicks
+- **Newsletter Signup**: Optional email subscription form
+- **Language Toggle**: Multi-language support
+- **Cookie Consent**: GDPR compliance features 
