@@ -216,7 +216,77 @@ The project uses custom container utilities defined in `globals.css` using Tailw
 - All containers maintain consistent horizontal centering and padding behavior
 - Uses Tailwind CSS v4's native utility system instead of custom CSS classes
 
-## Projects Section Component - Enhanced with Advanced Framer Motion (Latest Update)
+## Work Experience Section Component (Latest Update)
+
+### Overview
+Created a comprehensive work experience showcase section that displays Nirnay's professional journey with sophisticated animations and modern design. The component follows the same design patterns as the projects section while being specifically tailored for professional experience presentation.
+
+#### Key Features Implemented:
+
+1. **Professional Experience Timeline**:
+   - Chronological display of work history from most recent to earliest
+   - 4 key positions: Python Developer/Consultant, Technical Lead, Front-end Engineer/DAPP Developer, Junior Web Developer
+   - Each experience card includes company, location, duration, and team size
+   - Color-coded by experience type (AI/ML, Blockchain/Web3, Web Development)
+
+2. **Comprehensive Information Display**:
+   - **Role Details**: Job title, company, location, duration, team size
+   - **Technologies & Skills**: Interactive badges with hover effects
+   - **Key Responsibilities**: Detailed bullet points of role responsibilities
+   - **Key Achievements**: Highlighted accomplishments and impact
+   - **Impact Metrics**: Visual indicators of role impact and team size
+
+3. **Advanced Animation System**:
+   - **3D Card Transforms**: Same perspective and rotation effects as projects section
+   - **Staggered Entrances**: Cards appear with 0.15s delays for smooth progression
+   - **Interactive Elements**: Hover effects, drag functionality, and shimmer animations
+   - **Background Elements**: Floating orbs, sparkles, and parallax effects
+
+4. **Professional Data Structure**:
+   - **Experience Types**: AI/ML Development, Blockchain/Web3, Web Development
+   - **Technology Stacks**: Comprehensive lists of technologies used in each role
+   - **Achievement Tracking**: Quantified impacts and team leadership metrics
+   - **Career Progression**: Clear growth path from junior to leadership roles
+
+#### Technical Implementation:
+- **Component**: `ExperienceSection` in `src/components/experience-section.tsx`
+- **Animation Library**: Framer Motion with advanced 3D transforms
+- **Icons**: Lucide React icons for consistent visual language
+- **Responsive Design**: Mobile-first approach with timeline layout
+- **Performance**: Optimized animations using transform3d properties
+
+#### Experience Data Structure:
+```typescript
+{
+  id: string,
+  title: string,
+  company: string,
+  location: string,
+  duration: string,
+  type: 'ai-ml' | 'blockchain' | 'web',
+  typeIcon: LucideIcon,
+  typeColor: string,
+  technologies: string[],
+  responsibilities: string[],
+  achievements: string[],
+  impact: string,
+  teamSize: string
+}
+```
+
+#### Design Principles:
+- **Professional Presentation**: Clean, corporate-friendly design
+- **Information Hierarchy**: Clear separation of role details, responsibilities, and achievements
+- **Visual Consistency**: Matches existing portfolio design language
+- **Accessibility**: Proper semantic structure and contrast ratios
+
+### Career Progression Showcase:
+1. **Python Developer/Consultant (Current)**: AI/ML focus with team leadership
+2. **Technical Lead**: Blockchain/Web3 expertise with large team management
+3. **Front-end Engineer/DAPP Developer**: Full-stack development with blockchain integration
+4. **Junior Web Developer**: Foundation building and basic web development
+
+## Projects Section Component - Enhanced with Advanced Framer Motion (Previous Update)
 
 ### Overview
 Enhanced the projects showcase section with sophisticated Framer Motion capabilities, creating an immersive and interactive experience that demonstrates advanced animation techniques while maintaining performance and accessibility.

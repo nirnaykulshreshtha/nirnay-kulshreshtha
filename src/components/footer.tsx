@@ -62,20 +62,7 @@ export function Footer() {
 	];
 
 	return (
-		<footer className="relative mt-32 overflow-hidden">
-			{/* Gradient background */}
-			<div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/5"></div>
-			
-			{/* Animated background elements */}
-			<div className="absolute inset-0 overflow-hidden pointer-events-none">
-				<div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-br from-primary/20 to-transparent rounded-full blur-3xl animate-pulse"></div>
-				<div className="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-tl from-secondary/20 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
-				<div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-			</div>
-
-			{/* Border with gradient */}
-			<div className="relative border-t border-gradient-to-r from-transparent via-primary/20 to-transparent bg-gradient-to-r from-transparent via-border/40 to-transparent"></div>
-
+		<footer className="relative overflow-hidden">
 			<div className="relative container mx-auto px-6 py-16">
 				{/* Main contact section */}
 				<div className="max-w-4xl mx-auto">
@@ -95,8 +82,8 @@ export function Footer() {
 						
 						<p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed">
 							Let's build something amazing together. Your ideas, my implementation. 
-							<span className="text-primary font-medium"> Let's create the future!</span>
 						</p>
+						<p className="text-primary font-medium"> Let's create the future!</p>
 					</div>
 
 					{/* Interactive elements section */}

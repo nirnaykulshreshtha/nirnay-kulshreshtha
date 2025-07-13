@@ -4,17 +4,17 @@
  * ProjectsSection Component - Enhanced with Advanced Framer Motion
  *
  * Showcases Nirnay's key projects with sophisticated animations:
- * - 3D card transforms with perspective and rotation effects
- * - Gesture-based interactions (drag, hover, tap)
+ * - 3D card transforms with perspective and rotation effects (desktop only)
+ * - Gesture-based interactions (drag, hover, tap) (desktop only)
  * - Staggered entrance animations with complex timing
- * - Parallax scrolling effects and floating elements
- * - Advanced hover states with depth and lighting
+ * - Parallax scrolling effects and floating elements (desktop only)
+ * - Advanced hover states with depth and lighting (desktop only)
  * - Interactive technology badges with spring animations
- * - Magnetic cursor effects and smooth transitions
+ * - Magnetic cursor effects and smooth transitions (desktop only)
  * - Performance-optimized animations using transform3d
  *
- * This component demonstrates advanced motion design principles
- * while maintaining accessibility and performance.
+ * Mobile devices have animations disabled to prevent scroll interference
+ * and improve performance on touch devices.
  */
 import * as motion from "motion/react-client";
 import {
@@ -39,7 +39,8 @@ import {
   Database as BlockchainIcon,
   Sparkles,
   Eye,
-  MousePointer
+  MousePointer,
+  Mail
 } from 'lucide-react';
 
 export function ProjectsSection() {
@@ -152,9 +153,9 @@ export function ProjectsSection() {
   };
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 relative perspective-1000 overflow-hidden">
-      {/* Enhanced decorative background with parallax - constrained to prevent overflow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <section className="py-16 md:py-24 lg:py-32 relative overflow-hidden">
+      {/* Enhanced decorative background with parallax - desktop only */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <motion.div 
           className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl"
           animate={{ 
@@ -192,7 +193,7 @@ export function ProjectsSection() {
             ease: "linear" 
           }}
         />
-        {/* Floating sparkles - constrained positioning */}
+        {/* Floating sparkles - desktop only */}
         <motion.div
           className="absolute top-1/4 right-1/4"
           animate={{ 
@@ -289,7 +290,7 @@ export function ProjectsSection() {
           {projects.map((project, projectIndex) => (
             <motion.div
               key={project.id}
-              className="group relative perspective-1000"
+              className="group relative md:perspective-1000"
               initial={{ opacity: 0, y: 50, rotateX: -15, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
               transition={{ 
@@ -321,14 +322,14 @@ export function ProjectsSection() {
                     ease: [0.25, 0.46, 0.45, 0.94]
                   }
                 }}
-                drag
+                drag={false}
                 dragConstraints={{ left: -10, right: 10, top: -10, bottom: 10 }}
                 dragElastic={0.1}
                 dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
               >
-                {/* 3D Lighting Effect */}
+                {/* 3D Lighting Effect - desktop only */}
                 <motion.div
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 via-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block"
                   style={{
                     transform: "translateZ(20px)",
                   }}
@@ -404,9 +405,9 @@ export function ProjectsSection() {
                           transition: { duration: 0.1 }
                         }}
                       >
-                        {/* Shimmer effect on hover */}
+                        {/* Shimmer effect on hover - desktop only */}
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent hidden md:block"
                           initial={{ x: "-100%" }}
                           whileHover={{ x: "100%" }}
                           transition={{ duration: 0.6, ease: "easeInOut" }}
@@ -468,106 +469,7 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* Enhanced Call to Action */}
-        <motion.div
-          className="text-center mt-20 relative"
-          initial={{ opacity: 0, y: 30, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ 
-            duration: 1, 
-            delay: 2.5, 
-            ease: [0.25, 0.46, 0.45, 0.94]
-          }}
-        >
-          {/* Background glow effect - constrained */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-secondary/10 rounded-3xl blur-3xl overflow-hidden"
-            animate={{ 
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3]
-            }}
-            transition={{ 
-              duration: 4, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          />
-          
-          <div className="relative z-10 p-8 rounded-2xl bg-gradient-to-br from-background/60 via-background/40 to-background/20 backdrop-blur-xl border border-white/10">
-            <motion.p 
-              className="text-muted-foreground text-lg mb-8 font-medium"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.8, duration: 0.6 }}
-            >
-              Interested in working together? Let's discuss your next project.
-            </motion.p>
-            
-            <motion.button
-              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-primary via-primary/90 to-primary/80 text-white font-semibold rounded-full shadow-2xl overflow-hidden"
-                          whileHover={{ 
-              y: -3,
-              transition: { 
-                duration: 0.3,
-                type: "spring",
-                stiffness: 300,
-                damping: 20
-              }
-            }}
-            whileTap={{ 
-              transition: { duration: 0.1 }
-            }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3, duration: 0.6 }}
-            >
-              {/* Button background animation */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary/20 via-white/10 to-primary/20"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "100%" }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-              />
-              
-              {/* Floating sparkles around button */}
-              <motion.div
-                className="absolute -top-2 -left-2"
-                animate={{ 
-                  y: [0, -10, 0],
-                  rotate: [0, 180, 360],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "easeInOut" 
-                }}
-              >
-                <Sparkles className="h-4 w-4 text-white/60" />
-              </motion.div>
-              
-              <motion.div
-                className="absolute -bottom-2 -right-2"
-                animate={{ 
-                  y: [0, 10, 0],
-                  rotate: [360, 180, 0],
-                  opacity: [0, 1, 0]
-                }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity, 
-                  ease: "easeInOut",
-                  delay: 1.5
-                }}
-              >
-                <Sparkles className="h-4 w-4 text-white/60" />
-              </motion.div>
-              
-              <ExternalLink className="h-5 w-5 relative z-10 group-hover:rotate-12 transition-transform duration-300" />
-              <span className="relative z-10">Get In Touch</span>
-            </motion.button>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
