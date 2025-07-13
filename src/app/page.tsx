@@ -23,7 +23,7 @@ export default function Home() {
 
 			<div className="relative mx-2.5 lg:mx-4">
 				{/* Main content container with enhanced styling */}
-				<section className="relative py-16 md:py-24 lg:py-32 lg:pt-44">
+				<section id="home" className="relative py-16 md:py-24 lg:py-32 lg:pt-44">
 					<div className="container flex flex-col-reverse lg:flex-row justify-between gap-8 md:gap-14 lg:gap-20 items-center">
 						
 						{/* Introduction section component */}
@@ -35,19 +35,29 @@ export default function Home() {
 				</section>
 
 				{/* Skills & Technologies section */}
-				<SkillsSectionAlt />
+				<section id="skills">
+					<SkillsSectionAlt />
+				</section>
 
 				{/* Education section */}
-				<EducationSection />
+				<section id="education">
+					<EducationSection />
+				</section>
 
 				{/* Work Experience section */}
-				<ExperienceSection />
+				<section id="experience">
+					<ExperienceSection />
+				</section>
 
 				{/* Projects section */}
-				<ProjectsSection />
+				<section id="projects">
+					<ProjectsSection />
+				</section>
 
 				{/* Contact Form section */}
-				<ContactFormSection />
+				<section id="contact">
+					<ContactFormSection />
+				</section>
 			</div>
 			
 			{/* Footer section */}
