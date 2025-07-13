@@ -68,29 +68,16 @@ export function Footer() {
 				<div className="max-w-4xl mx-auto">
 					{/* Contact heading with animation */}
 					<div className="text-center mb-12">
-						<div className="inline-flex items-center gap-3 mb-6">
-							<div className="w-12 h-px bg-gradient-to-r from-transparent to-primary/60"></div>
-							<span className="text-sm font-medium text-primary/80 uppercase tracking-wider">Let's Connect</span>
-							<div className="w-12 h-px bg-gradient-to-l from-transparent to-primary/60"></div>
-						</div>
-						
-						<h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-							<span className="bg-gradient-to-r from-green-400 via-emerald-500 to-teal-400 bg-clip-text text-transparent">
-								Contact me
-							</span>
-						</h2>
-						
 						<p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed">
 							Let's build something amazing together. Your ideas, my implementation. 
 						</p>
-						<p className="text-primary font-medium"> Let's create the future!</p>
+						<p className="text-primary font-medium text-xl sm:text-2xl md:text-4xl font-display mt-4"> Let's create the future!</p>
 					</div>
 
 					{/* Interactive elements section */}
 					<div className="flex flex-col lg:flex-row items-center justify-between gap-8">
 						{/* Social links with modern design */}
 						<div className="flex flex-col items-center lg:items-start gap-6">
-							<h3 className="text-lg font-semibold text-foreground">Connect with me</h3>
 							<div className="flex items-center gap-4">
 								{socialLinks.map((social) => {
 									const IconComponent = social.icon;
@@ -124,17 +111,6 @@ export function Footer() {
 						<div className="flex flex-col items-center lg:items-end gap-6">
 							{/* Theme toggle */}
 							<ThemeToggle />
-							
-							{/* CTA Button */}
-							<Button 
-								asChild
-								className="group bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground px-8 py-3 rounded-2xl font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
-							>
-								<a href="mailto:nirnay@example.com" className="flex items-center gap-2">
-									Get in Touch
-									<ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
-								</a>
-							</Button>
 						</div>
 					</div>
 				</div>

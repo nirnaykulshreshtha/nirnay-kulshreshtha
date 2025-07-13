@@ -168,7 +168,7 @@ export function EducationSection() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <CardContent className="px-0">
+                  <CardContent className="px-6">
                     {/* Header Section */}
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
                       <div className="flex-1">
