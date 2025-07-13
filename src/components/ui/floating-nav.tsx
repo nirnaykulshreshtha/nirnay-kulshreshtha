@@ -27,17 +27,6 @@ import { HomeIcon, PencilIcon, CalendarIcon, MailIcon, BriefcaseIcon, Graduation
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { buttonVariants } from '@/components/ui/button';
 
-const DATA = {
-  navbar: [
-    { href: "#home", icon: HomeIcon, label: "Home" },
-    { href: "#skills", icon: PencilIcon, label: "Skills & Technologies" },
-    { href: "#education", icon: GraduationCapIcon, label: "Education" },
-    { href: "#experience", icon: CalendarIcon, label: "Experience" },
-    { href: "#projects", icon: BriefcaseIcon, label: "Projects" },
-    { href: "#contact", icon: MailIcon, label: "Contact" },
-  ],
-};
-
 
 /**
  * FloatingNav Props
@@ -48,7 +37,7 @@ export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems?: { name: string; link: string; icon?: React.ComponentType<{ className?: string }> }[];
+  navItems?: { label: string; href: string; icon?: React.ComponentType<{ className?: string }> }[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -75,13 +64,7 @@ export const FloatingNav = ({
   });
 
   // Use navItems prop if provided, otherwise fallback to DATA.navbar
-  const items = navItems
-    ? navItems.map(item => ({
-        href: item.link,
-        icon: item.icon || HomeIcon,
-        label: item.name,
-      }))
-    : DATA.navbar;
+  const items = navItems || [];
 
   return (
     <AnimatePresence mode="wait">
@@ -117,7 +100,7 @@ export const FloatingNav = ({
                       "size-12 rounded-full",
                     )}
                   >
-                    <item.icon className="size-4" />
+                    {item.icon && <item.icon className="size-4" />}
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
