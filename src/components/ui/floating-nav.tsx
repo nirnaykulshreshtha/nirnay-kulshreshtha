@@ -22,7 +22,7 @@ import {
 } from 'framer-motion';
 import Link from 'next/link';
 import { cn } from "@/lib/utils";
-import { Dock, DockIcon, DockItem } from "@/components/magicui/dock";
+import { Dock, DockIcon } from "@/components/magicui/dock";
 import { HomeIcon, PencilIcon, CalendarIcon, MailIcon, BriefcaseIcon, GraduationCapIcon } from "lucide-react";
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { buttonVariants } from '@/components/ui/button';
@@ -94,7 +94,65 @@ export const FloatingNav = ({
         )}
       >
         <TooltipProvider>
+
         <Dock direction="middle">
+          {DATA.navbar.map((item) => (
+            <DockIcon key={item.label}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
+                    aria-label={item.label}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "size-12 rounded-full",
+                    )}
+                  >
+                    <item.icon className="size-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{item.label}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+          ))}
+          {/* <Separator orientation="vertical" className="h-full" /> */}
+          {/* {Object.entries(DATA.contact.social).map(([name, social]) => (
+            <DockIcon key={name}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={social.url}
+                    aria-label={social.name}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "size-12 rounded-full",
+                    )}
+                  >
+                    <social.icon className="size-4" />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{name}</p>
+                </TooltipContent>
+              </Tooltip>
+            </DockIcon>
+          ))} */}
+          {/* <Separator orientation="vertical" className="h-full py-2" /> */}
+          {/* <DockIcon>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <ModeToggle className="rounded-full" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Theme</p>
+              </TooltipContent>
+            </Tooltip>
+          </DockIcon> */}
+        </Dock>
+
+        {/* <Dock direction="middle">
           {DATA.navbar.map((item, idx) => (
             <React.Fragment key={idx}>
             <DockItem
@@ -116,7 +174,7 @@ export const FloatingNav = ({
     )}
             </React.Fragment>
           ))}
-        </Dock>
+        </Dock> */}
       </TooltipProvider>
       </motion.div>
     </AnimatePresence>

@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import React, { PropsWithChildren, ReactNode, useRef } from 'react';
+import React, { PropsWithChildren, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,7 +27,7 @@ const DEFAULT_MAGNIFICATION = 60;
 const DEFAULT_DISTANCE = 140;
 
 const dockVariants = cva(
-  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto flex h-[48px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
+  "supports-backdrop-blur:bg-white/10 supports-backdrop-blur:dark:bg-black/10 mx-auto mt-8 flex h-[58px] w-max items-center justify-center gap-2 rounded-2xl border p-2 backdrop-blur-md",
 );
 
 const Dock = React.forwardRef<HTMLDivElement, DockProps>(
@@ -141,76 +141,4 @@ const DockIcon = ({
 
 DockIcon.displayName = "DockIcon";
 
-
-/* ────────────────────────────────────────────────────────────
-   Types
-   ──────────────────────────────────────────────────────────── */
-export interface DockItemProps
-    extends Omit<MotionProps & React.HTMLAttributes<HTMLDivElement>, "children"> {
-  /** How large the icon gets when the cursor is centred over it (e.g. 1.6 = 160 %) */
-  magnification?: number;
-  /** Horizontal distance (px) from the icon centre at which magnification ends */
-  distance?: number;
-  /** Shared MotionValue coming from the parent Dock for the cursor X-position */
-  mouseX?: MotionValue<number>;
-  className?: string;
-  children?: ReactNode;
-  props?: PropsWithChildren;
-}
-
-/* ────────────────────────────────────────────────────────────
-   Defaults
-   ──────────────────────────────────────────────────────────── */
-const DEFAULT_ITEM_MAGNIFICATION = 1.6;
-const DEFAULT_ITEM_DISTANCE = 120;
-
-/* ────────────────────────────────────────────────────────────
-   Component
-   ──────────────────────────────────────────────────────────── */
-const DockItem = ({
-                    magnification = DEFAULT_ITEM_MAGNIFICATION,
-                    distance       = DEFAULT_ITEM_DISTANCE,
-                    mouseX,
-                    className,
-                    children,
-                    ...props
-                  }: DockItemProps) => {
-  const ref          = useRef<HTMLDivElement>(null);
-  const defaultMouseX = useMotionValue(Infinity);
-
-  const distanceCalc = useTransform(mouseX ?? defaultMouseX, (val) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
-  });
-
-  const scaleTransform = useTransform(
-      distanceCalc,
-      [-distance, 0, distance],
-      [1, magnification, 1],
-  );
-  const scale = useSpring(scaleTransform, {
-    mass: 0.1,
-    stiffness: 150,
-    damping: 12,
-  });
-
-  return (
-      <motion.div
-          ref={ref}
-          style={{
-            scale
-          }}
-          className={cn(
-              "flex cursor-pointer items-center justify-center",
-              className,
-          )}
-          {...props}
-      >
-        {children}
-      </motion.div>
-  );
-};
-
-DockItem.displayName = "DockItem";
-
-export { Dock, DockIcon, DockItem, dockVariants };
+export { Dock, DockIcon, dockVariants };
