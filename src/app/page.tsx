@@ -1,6 +1,7 @@
 import { IntroSection } from '@/components/intro-section';
 import { ProfileSection } from '@/components/profile-section';
 import { SkillsSectionAlt } from '@/components/skills-section-alt';
+import { ProjectsSection } from '@/components/projects-section';
 import { Footer } from '@/components/footer';
 
 /**
@@ -32,6 +33,9 @@ export default function Home() {
 
 				{/* Skills & Technologies section */}
 				<SkillsSectionAlt />
+
+				{/* Projects section */}
+				<ProjectsSection />
 			</div>
 			
 			{/* Footer section */}

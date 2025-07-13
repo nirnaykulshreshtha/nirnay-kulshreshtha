@@ -216,7 +216,137 @@ The project uses custom container utilities defined in `globals.css` using Tailw
 - All containers maintain consistent horizontal centering and padding behavior
 - Uses Tailwind CSS v4's native utility system instead of custom CSS classes
 
-## Footer Component (Latest Update)
+## Projects Section Component - Enhanced with Advanced Framer Motion (Latest Update)
+
+### Overview
+Enhanced the projects showcase section with sophisticated Framer Motion capabilities, creating an immersive and interactive experience that demonstrates advanced animation techniques while maintaining performance and accessibility.
+
+#### Advanced Animation Features Implemented:
+
+1. **3D Card Transforms & Perspective**:
+   - Added `perspective-1000` to section container for 3D depth
+   - Cards use `transformStyle: "preserve-3d"` for true 3D transforms
+   - Hover effects include `rotateY`, `rotateX`, and `scale` with smooth transitions
+   - 3D lighting effects with `translateZ` for depth perception
+
+2. **Gesture-Based Interactions**:
+   - **Drag Functionality**: Cards can be dragged with elastic constraints
+   - **Drag Constraints**: Limited movement range (-10px to +10px) for subtle interaction
+   - **Drag Elastic**: 0.1 elastic coefficient for natural feel
+   - **Bounce Transitions**: Spring-based bounce effects with configurable stiffness/damping
+
+3. **Advanced Entrance Animations**:
+   - **Spring Physics**: Cards use spring animations with `stiffness: 100, damping: 15`
+   - **Staggered Timing**: 0.15s delays between cards with complex easing curves
+   - **3D Rotation**: Initial `rotateX: -15` creates depth on entrance
+   - **Scale Effects**: Cards start at 0.9 scale and animate to full size
+
+4. **Enhanced Background Elements**:
+   - **Parallax Floating Orbs**: Background elements move independently with different timings
+   - **Rotating Center Element**: 20-second rotation cycle for ambient movement
+   - **Floating Sparkles**: Animated sparkle icons with varying opacity and rotation
+   - **Scale Variations**: Background elements scale and move for dynamic feel
+
+5. **Interactive Technology Badges**:
+   - **Spring Animations**: Badges use spring physics with `stiffness: 200, damping: 20`
+   - **3D Hover Effects**: `rotateY: 10` on hover for depth
+   - **Shimmer Effects**: Gradient overlay that slides across badges on hover
+   - **Staggered Timing**: 0.08s delays between badge animations
+
+6. **Advanced Header Animations**:
+   - **3D Rotation**: Badge rotates on Y-axis during entrance (`rotateY: -90` to `0`)
+   - **Shimmer Overlay**: Continuous gradient animation across the badge
+   - **Perspective Text**: Title uses `rotateX` for 3D text effect
+   - **Interactive Hint**: Mouse pointer icon with fade-in animation
+
+7. **Enhanced Call-to-Action**:
+   - **Glow Background**: Animated gradient background with scale and opacity changes
+   - **Glassmorphism Container**: Backdrop blur with gradient borders
+   - **Floating Sparkles**: Animated sparkles around the button
+   - **Button Shimmer**: Gradient overlay that slides across button on hover
+   - **Spring Hover Effects**: Advanced spring physics for button interactions
+
+#### Technical Implementation Details:
+
+**3D Transform System**:
+```typescript
+// Section container with perspective
+<section className="perspective-1000">
+
+// Card with 3D transforms
+<motion.div 
+  style={{ transformStyle: "preserve-3d" }}
+  whileHover={{ 
+    rotateY: 5,
+    rotateX: 2,
+    scale: 1.02
+  }}
+/>
+```
+
+**Gesture System**:
+```typescript
+// Drag functionality with constraints
+drag
+dragConstraints={{ left: -10, right: 10, top: -10, bottom: 10 }}
+dragElastic={0.1}
+dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
+```
+
+**Spring Animation System**:
+```typescript
+// Advanced spring physics
+transition={{ 
+  type: "spring",
+  stiffness: 100,
+  damping: 15
+}}
+```
+
+**Shimmer Effect Implementation**:
+```typescript
+// Gradient overlay animation
+<motion.div
+  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+  initial={{ x: "-100%" }}
+  whileHover={{ x: "100%" }}
+  transition={{ duration: 0.6, ease: "easeInOut" }}
+/>
+```
+
+#### Performance Optimizations:
+- **Transform3D**: All animations use `transform3d` for hardware acceleration
+- **GPU Acceleration**: `transform-gpu` class applied to animated elements
+- **Efficient Easing**: Custom cubic-bezier curves for smooth performance
+- **Reduced Repaints**: Transform-based animations minimize layout thrashing
+
+#### Animation Timing System:
+- **Section Header**: 0.3s delay, 0.8s duration with custom easing
+- **Project Cards**: 0.8s + (index * 0.15s) delay, 1.2s duration with spring physics
+- **Technology Badges**: 1.2s + (projectIndex * 0.15s) + (techIndex * 0.08s) delay
+- **Call-to-Action**: 2.5s delay for final reveal
+
+#### Accessibility Considerations:
+- **Reduced Motion**: Respects user's motion preferences
+- **Focus States**: Maintained keyboard navigation
+- **Semantic Structure**: Preserved HTML semantics
+- **Performance**: Smooth animations even on lower-end devices
+
+#### Design Principles Applied:
+- **Depth & Layering**: 3D transforms create visual hierarchy
+- **Micro-interactions**: Subtle animations enhance user engagement
+- **Consistency**: All animations follow the same timing and easing principles
+- **Performance**: Optimized for 60fps animations across devices
+
+#### Integration & Compatibility:
+- **Framer Motion**: Latest version with advanced gesture support
+- **Tailwind CSS**: Custom perspective utilities and transform classes
+- **React**: Proper component lifecycle management
+- **TypeScript**: Full type safety for animation configurations
+
+This enhanced implementation demonstrates advanced motion design principles while maintaining the professional aesthetic and ensuring excellent performance across all devices.
+
+## Footer Component (Previous Update)
 
 ### Overview
 Added a comprehensive footer component with theme toggle functionality and modern design elements.
@@ -246,52 +376,4 @@ Added a comprehensive footer component with theme toggle functionality and moder
 5. **Copyright and Legal Links**:
    - Dynamic year calculation for copyright
    - Privacy Policy and Terms of Service links
-   - Responsive layout for different screen sizes
-
-#### Technical Implementation:
-- **Component**: `Footer` in `src/components/footer.tsx`
-- **Client Component**: Uses "use client" directive for interactive elements
-- **Responsive Design**: Grid layout that adapts from 1 column (mobile) to 4 columns (desktop)
-- **Accessibility**: Proper ARIA labels, semantic HTML, and keyboard navigation
-- **Performance**: Optimized with minimal re-renders and efficient event handling
-
-#### Design Features:
-- **Glassmorphism Effect**: Backdrop blur with semi-transparent background
-- **Decorative Elements**: Floating gradient orbs for visual interest
-- **Consistent Theming**: Matches the portfolio's design language
-- **Smooth Animations**: Hover effects and transitions throughout
-- **Border Styling**: Subtle border separators with theme-aware colors
-
-#### Component Structure:
-```typescript
-Footer
-├── Brand Section (2 columns on desktop)
-│   ├── Name with gradient text
-│   ├── Description
-│   └── Social Media Links
-├── Quick Links (1 column)
-│   └── Navigation Links
-├── Settings (1 column)
-│   ├── Theme Toggle
-│   └── Contact Information
-└── Bottom Section
-    ├── Copyright
-    └── Legal Links
-```
-
-#### Integration:
-- **Main Page**: Added to `src/app/page.tsx` after the skills section
-- **Layout**: Positioned at the bottom with proper spacing (`mt-32`)
-- **Styling**: Uses existing design system colors and spacing
-
-#### Accessibility Features:
-- **ARIA Labels**: Descriptive labels for all interactive elements
-- **Keyboard Navigation**: All links and buttons are keyboard accessible
-- **Screen Reader Support**: Proper semantic structure and alt text
-- **Focus Indicators**: Visible focus states for all interactive elements
-
-#### Future Enhancements:
-- **Analytics Integration**: Track social media link clicks
-- **Newsletter Signup**: Optional email subscription form
-- **Language Toggle**: Multi-language support
-- **Cookie Consent**: GDPR compliance features 
+   - Responsive layout for different screen sizes 
