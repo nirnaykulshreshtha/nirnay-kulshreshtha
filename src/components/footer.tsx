@@ -18,51 +18,47 @@
 
 import React from 'react';
 import { Github, Linkedin, Mail, Twitter, ArrowRight } from 'lucide-react';
+import { SiGithub, SiWhatsapp } from '@icons-pack/react-simple-icons';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { Button } from '@/components/ui/button';
 
 /**
  * Footer component with modern contact section, social links, and theme toggle
+ * Social links are now sourced from ProfileSection for consistency.
+ * Only GitHub, Email, and WhatsApp are shown.
  * @returns JSX.Element - The rendered footer component
  */
 export function Footer() {
 	/**
 	 * Social media and contact links configuration
-	 * Each link contains the URL, icon, label, and aria-label for accessibility
+	 * Source of truth: ProfileSection
 	 */
 	const socialLinks = [
 		{
 			href: "https://github.com/nirnaykulshreshtha",
-			icon: Github,
+			icon: SiGithub,
 			label: "GitHub",
 			ariaLabel: "Visit Nirnay's GitHub profile",
 			color: "hover:text-gray-800 dark:hover:text-gray-200"
 		},
 		{
-			href: "https://linkedin.com/in/nirnaykulshreshtha",
-			icon: Linkedin,
-			label: "LinkedIn",
-			ariaLabel: "Connect with Nirnay on LinkedIn",
-			color: "hover:text-blue-600"
-		},
-		{
-			href: "https://twitter.com/nirnaykulshreshtha",
-			icon: Twitter,
-			label: "Twitter",
-			ariaLabel: "Follow Nirnay on Twitter",
-			color: "hover:text-blue-400"
-		},
-		{
-			href: "mailto:nirnay@example.com",
+			href: "mailto:nirnaykulshreshtha@gmail.com",
 			icon: Mail,
 			label: "Email",
 			ariaLabel: "Send email to Nirnay",
 			color: "hover:text-red-500"
+		},
+		{
+			href: "https://wa.me/919807564282",
+			icon: SiWhatsapp,
+			label: "WhatsApp",
+			ariaLabel: "Chat with Nirnay on WhatsApp",
+			color: "hover:text-green-500"
 		}
 	];
 
 	return (
-		<footer className="relative overflow-hidden">
+		<footer className="relative overflow-hidden pb-16">
 			<div className="relative container mx-auto px-6 py-16">
 				{/* Main contact section */}
 				<div className="max-w-4xl mx-auto">

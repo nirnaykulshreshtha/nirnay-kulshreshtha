@@ -1,15 +1,20 @@
 # Dev Notebook
 
-## [2024-06-09] DockItem Component Addition
+## Dock Component Responsive Design (2024-06-09)
 
-- **Context:** The Dock component (macOS-style) previously only supported DockIcon, which allowed a single icon with magnification effect.
-- **Change:** Introduced a new `DockItem` component that allows rendering both an icon and an additional element (such as a label, badge, or any React node) together, with the same magnification effect as DockIcon.
-- **Design Choice:** This enables more flexible dock items, such as icons with labels or status indicators, without breaking existing DockIcon usage. Dock now supports both DockIcon and DockItem as children, passing magnification and sizing props to both.
-- **Usage Example:**
-  ```tsx
-  <Dock>
-    <DockItem icon={<MyIcon />} element={<span>Label</span>} />
-    <DockIcon>...</DockIcon>
-  </Dock>
-  ```
-- **Reasoning:** This approach maintains backward compatibility and provides a clear, extensible pattern for future dock item enhancements. 
+- **Change:** The Dock navigation bar is now fully responsive.
+  - **Mobile (width < 768px):**
+    - Dock is always fixed to the bottom (`fixed bottom-0 left-0 right-0 w-full`).
+    - Full-width, no rounded corners, border at the top.
+    - Larger icon size and spacing for easier touch interaction.
+    - Reduced magnification effect for icons (less distracting on touch).
+  - **Desktop (width >= 768px):**
+    - Dock is floating, centered, with rounded corners and magnifying icons.
+    - Behaves as before.
+- **Implementation:**
+  - Used Tailwind responsive classes in `dockVariants` for layout and style changes.
+  - Icon size, magnification, and distance are set based on screen width.
+  - All changes are documented in the Dock file and here for future reference.
+- **Rationale:**
+  - Improves mobile UX by making navigation always accessible and touch-friendly.
+  - Maintains the desktop experience users expect. 
