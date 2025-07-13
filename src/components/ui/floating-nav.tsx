@@ -30,14 +30,14 @@ import { buttonVariants } from '@/components/ui/button';
 
 /**
  * FloatingNav Props
- * @param navItems - Array of navigation items ({ name, link, icon? }) to render in the nav bar. If not provided, defaults to DATA.navbar.
+ * @param navItems - Array of navigation items ({ label, href, icon? }) to render in the nav bar. Icon is a string name mapped to a component internally.
  * @param className - Optional className for styling.
  */
 export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems?: { label: string; href: string; icon?: React.ComponentType<{ className?: string }> }[];
+  navItems?: { label: string; href: string; icon?: string }[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -62,6 +62,16 @@ export const FloatingNav = ({
       }
     }
   });
+
+  // Map icon names to actual icon components
+  const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+    HomeIcon,
+    PencilIcon,
+    GraduationCapIcon,
+    CalendarIcon,
+    BriefcaseIcon,
+    MailIcon,
+  };
 
   // Use navItems prop if provided, otherwise fallback to DATA.navbar
   const items = navItems || [];
@@ -88,27 +98,30 @@ export const FloatingNav = ({
         <TooltipProvider>
 
         <Dock direction="middle">
-          {items.map((item) => (
-            <DockIcon key={item.label}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={item.href}
-                    aria-label={item.label}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-full",
-                    )}
-                  >
-                    {item.icon && <item.icon className="size-4" />}
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{item.label}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
-          ))}
+          {items.map((item) => {
+            const Icon = item.icon ? iconMap[item.icon] : undefined;
+            return (
+              <DockIcon key={item.label}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={item.href}
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-full",
+                      )}
+                    >
+                      {Icon && <Icon className="size-4" />}
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            );
+          })}
           {/* <Separator orientation="vertical" className="h-full" /> */}
           {/* {Object.entries(DATA.contact.social).map(([name, social]) => (
             <DockIcon key={name}>

@@ -5,6 +5,7 @@ import { Funnel_Display, Albert_Sans } from 'next/font/google';
 import { FloatingNav } from "@/components/ui/floating-nav";
 import { HomeIcon, PencilIcon, GraduationCapIcon, CalendarIcon, BriefcaseIcon } from "lucide-react";
 import { MailIcon } from "lucide-react";
+import { navItems } from "@/components/common/nav-items";
 
 const funnel_display = Funnel_Display({
     subsets: ['latin'],
@@ -28,16 +29,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Documentation: FloatingNav is placed at the top of the app, above all content, for global navigation.
-  // navItems can be customized as needed.
-  const navItems = [
-    { href: "#home", icon: HomeIcon, label: "Home" },
-    { href: "#skills", icon: PencilIcon, label: "Skills & Technologies" },
-    { href: "#education", icon: GraduationCapIcon, label: "Education" },
-    { href: "#experience", icon: CalendarIcon, label: "Experience" },
-    { href: "#projects", icon: BriefcaseIcon, label: "Projects" },
-    { href: "#contact", icon: MailIcon, label: "Contact" },
-  ];
+  // Documentation: navItems are imported from a separate file for maintainability and to ensure only serializable data is passed to client components.
   return (
     <html lang="en" suppressHydrationWarning className={`${funnel_display.variable} ${albert_sans.variable}`}>
         <head />
