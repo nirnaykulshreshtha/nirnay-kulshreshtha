@@ -1,6 +1,7 @@
 import { IntroSection } from '@/components/intro-section';
 import { ProfileSection } from '@/components/profile-section';
 import { SkillsSectionAlt } from '@/components/skills-section-alt';
+import { EducationSection } from '@/components/education-section';
 import { ExperienceSection } from '@/components/experience-section';
 import { ProjectsSection } from '@/components/projects-section';
 import { Footer } from '@/components/footer';
@@ -34,6 +35,9 @@ export default function Home() {
 
 				{/* Skills & Technologies section */}
 				<SkillsSectionAlt />
+
+				{/* Education section */}
+				<EducationSection />
 
 				{/* Work Experience section */}
 				<ExperienceSection />
