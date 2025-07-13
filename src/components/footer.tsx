@@ -17,7 +17,7 @@
 "use client"
 
 import React from 'react';
-import { Github, Linkedin, Mail, Twitter, ArrowRight } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { SiGithub, SiWhatsapp } from '@icons-pack/react-simple-icons';
 import { ThemeToggle } from '@/components/common/theme-toggle';
 import { Button } from '@/components/ui/button';
@@ -65,9 +65,9 @@ export function Footer() {
 					{/* Contact heading with animation */}
 					<div className="text-center mb-12">
 						<p className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed">
-							Let's build something amazing together. Your ideas, my implementation. 
-						</p>
-						<p className="text-primary font-medium text-xl sm:text-2xl md:text-4xl font-display mt-4"> Let's create the future!</p>
+						Let&apos;s build something amazing together. Your ideas, my implementation. 
+					</p>
+					<p className="text-primary font-medium text-xl sm:text-2xl md:text-4xl font-display mt-4"> Let&apos;s create the future!</p>
 					</div>
 
 					{/* Interactive elements section */}

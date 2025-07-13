@@ -14,32 +14,7 @@
  * without being distracted by proficiency bars. It also works well for mobile.
  */
 import * as motion from "motion/react-client";
-import {
-  Code,
-  Smartphone,
-  Server,
-  Database,
-  Brain,
-  Zap,
-  Layers,
-  Monitor,
-  GitBranch,
-  Box,
-  Cloud,
-  Square,
-  FileText,
-  FileCode,
-  FileCode2,
-  Database as DatabaseIcon,
-  Flame,
-  Figma,
-  Apple,
-  Shield,
-  Globe,
-  Terminal,
-  BarChart3,
-  Eye
-} from 'lucide-react';
+import { Brain, Server, Smartphone, Monitor, Cloud, Shield, Code } from 'lucide-react';
 
 export function SkillsSectionAlt() {
   const skillCategories = [

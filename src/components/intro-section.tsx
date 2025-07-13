@@ -1,10 +1,9 @@
 "use client";
 
 import { AuroraText } from '@/components/magicui/aurora-text';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Download, Mail, Calendar, MapPin, Award, Layers, Zap, Code, Database, Server, Target, Star, Globe, TrendingUp, Smartphone, Cpu, Monitor, Brain } from 'lucide-react';
+import { Layers, Code, Server, Brain, Monitor } from 'lucide-react';
 import * as motion from "motion/react-client";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 /**
  * IntroSection component displaying the main introduction text
@@ -15,7 +14,7 @@ export function IntroSection() {
 	const [isTyping, setIsTyping] = useState(true);
 	const [typedText, setTypedText] = useState('');
 
-	const sections = [
+	const sections = useMemo(() => [
 		{
 			icon: Code,
 			text: "Software Developer",
@@ -24,21 +23,6 @@ export function IntroSection() {
 		{
 			icon: Layers,
 			text: "Full Stack Developer",
-			delay: 2000
-		},
-		{
-			icon: Smartphone,
-			text: "Mobile Application Developer",
-			delay: 2000
-		},
-		{
-			icon: Award,
-			text: "Project Engineer",
-			delay: 2000
-		},
-		{
-			icon: Smartphone,
-			text: "React Native • Flutter Developer",
 			delay: 2000
 		},
 		{
@@ -56,7 +40,7 @@ export function IntroSection() {
 			text: "Web Developer",
 			delay: 2000
 		}
-	];
+	], []);
 
 	useEffect(() => {
 		const currentSectionData = sections[currentSection];
@@ -83,7 +67,7 @@ export function IntroSection() {
 		}, 100);
 
 		return () => clearInterval(typingInterval);
-	}, [currentSection]);
+	}, [currentSection, sections]);
 
 	const CurrentIcon = sections[currentSection].icon;
 
@@ -103,7 +87,7 @@ export function IntroSection() {
 					transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
 				>
 					<h1 className="font-display text-2xl tracking-tight md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl tracking-wider bg-gradient-to-r from-foreground via-foreground/90 to-foreground/70 bg-clip-text text-transparent">
-						Hi, I'm <AuroraText className="text-primary">Nirnay</AuroraText> 👋
+						Hi, I&apos;m <AuroraText className="text-primary">Nirnay</AuroraText> 👋
 					</h1>
 					<div className="h-1 w-20 bg-gradient-to-r from-primary to-primary/50 rounded-full mx-auto lg:mx-0"></div>
 				</motion.div>
@@ -148,7 +132,7 @@ export function IntroSection() {
 				transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
 			>
 				<p className="font-text text-muted-foreground text-base md:text-lg lg:text-xl leading-relaxed">
-					I'm a passionate software developer who loves building modern, scalable
+					I&apos;m a passionate software developer who loves building modern, scalable
 					applications with cutting-edge technologies.
 				</p>
 				<p className="font-text text-muted-foreground text-base md:text-lg lg:text-xl leading-relaxed">

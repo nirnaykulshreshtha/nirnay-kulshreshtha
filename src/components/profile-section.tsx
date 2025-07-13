@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from '@/components/ui/button';
-import { Calendar, Mail, MapPin, Sparkles, Star } from 'lucide-react';
+import { Calendar, Mail, Sparkles, Star } from 'lucide-react';
 import { SiGithub, SiWhatsapp } from '@icons-pack/react-simple-icons';
 import * as motion from "motion/react-client";
+import Image from 'next/image';
 
 /**
  * ProfileSection component displaying an enhanced profile image with decorative elements,
@@ -43,10 +44,12 @@ export function ProfileSection() {
 						
 						{/* Main image with enhanced styling */}
 						<span className="relative flex shrink-0 overflow-hidden rounded-full size-52 md:size-60 lg:size-64 border-4 border-white/20 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm">
-							<img 
+							<Image 
 								className="aspect-square h-full w-full object-cover object-[32px_8px] rounded-full" 
 								alt="Nirnay Kulshreshtha"
 								src="/face-nirnay.png"
+								fill
+								priority
 							/>
 						</span>
 						

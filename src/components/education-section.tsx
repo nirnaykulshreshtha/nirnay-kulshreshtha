@@ -19,20 +19,14 @@ import {
   Calendar,
   MapPin,
   BookOpen,
-  Award,
-  Users,
-  Code,
-  Database,
-  Globe,
-  Smartphone,
-  Server,
-  Brain,
-  Star,
   ChevronRight,
   Building2,
   FileText,
   Target,
-  TrendingUp
+  TrendingUp,
+  Code,
+  Star,
+  Users
 } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";

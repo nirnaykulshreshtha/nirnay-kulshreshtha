@@ -26,7 +26,6 @@ import { Dock, DockIcon } from "@/components/magicui/dock";
 import { HomeIcon, PencilIcon, CalendarIcon, MailIcon, BriefcaseIcon, GraduationCapIcon } from "lucide-react";
 import { Tooltip, TooltipProvider, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { buttonVariants } from '@/components/ui/button';
-import { Separator } from '@/components/ui/separator';
 
 const DATA = {
   navbar: [
@@ -40,15 +39,16 @@ const DATA = {
 };
 
 
+/**
+ * FloatingNav Props
+ * @param navItems - Array of navigation items ({ name, link, icon? }) to render in the nav bar. If not provided, defaults to DATA.navbar.
+ * @param className - Optional className for styling.
+ */
 export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: React.ReactNode;
-  }[];
+  navItems?: { name: string; link: string; icon?: React.ComponentType<{ className?: string }> }[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -74,6 +74,15 @@ export const FloatingNav = ({
     }
   });
 
+  // Use navItems prop if provided, otherwise fallback to DATA.navbar
+  const items = navItems
+    ? navItems.map(item => ({
+        href: item.link,
+        icon: item.icon || HomeIcon,
+        label: item.name,
+      }))
+    : DATA.navbar;
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -96,7 +105,7 @@ export const FloatingNav = ({
         <TooltipProvider>
 
         <Dock direction="middle">
-          {DATA.navbar.map((item) => (
+          {items.map((item) => (
             <DockIcon key={item.label}>
               <Tooltip>
                 <TooltipTrigger asChild>

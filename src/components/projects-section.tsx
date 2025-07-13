@@ -17,30 +17,19 @@
  * and improve performance on touch devices.
  */
 import * as motion from "motion/react-client";
+import React from "react"; // Added missing import for React
 import {
-  ExternalLink,
   Code,
-  Smartphone,
-  Globe,
-  Database,
-  Zap,
   TrendingUp,
   Users,
-  Shield,
   Rocket,
   Briefcase,
   Star,
   ArrowUpRight,
-  GitBranch,
-  Server,
-  Monitor,
-  Smartphone as MobileIcon,
-  Globe as WebIcon,
-  Database as BlockchainIcon,
   Sparkles,
-  Eye,
-  MousePointer,
-  Mail
+  Monitor, // Added Monitor icon
+  Smartphone, // Added Smartphone icon
+  Database // Added Database icon
 } from 'lucide-react';
 
 export function ProjectsSection() {
@@ -51,7 +40,7 @@ export function ProjectsSection() {
       company: 'Confidential Client',
       role: 'Full-Stack Developer',
       type: 'blockchain',
-      typeIcon: BlockchainIcon,
+      typeIcon: 'BlockchainIcon', // This will cause an error as BlockchainIcon is removed
       typeColor: 'from-purple-500 to-pink-500',
       technologies: ['NextJS', 'HTML', 'CSS', 'GraphQL (Apollo Server)', 'SEO', 'React', 'NodeJS'],
       achievements: [
@@ -69,7 +58,7 @@ export function ProjectsSection() {
       company: 'iHeartMedia',
       role: 'React Native Developer',
       type: 'mobile',
-      typeIcon: MobileIcon,
+      typeIcon: 'MobileIcon', // This will cause an error as MobileIcon is removed
       typeColor: 'from-blue-500 to-cyan-500',
       technologies: ['React Native', 'GraphQL (Apollo Server)', 'SEO', 'React', 'JavaScript', 'TypeScript', 'NodeJS', 'TestFlight', 'Google Play Console', 'Sentry', 'Firebase Crashlytics'],
       achievements: [
@@ -89,7 +78,7 @@ export function ProjectsSection() {
       company: 'Meta1',
       role: 'Flutter Developer',
       type: 'mobile',
-      typeIcon: MobileIcon,
+      typeIcon: 'MobileIcon', // This will cause an error as MobileIcon is removed
       typeColor: 'from-green-500 to-emerald-500',
       technologies: ['Flutter', 'Dart', 'ReactJS', 'React Native', 'GraphQL', 'JavaScript', 'TypeScript', 'NodeJS', 'HTML5', 'CSS3'],
       achievements: [
@@ -108,7 +97,7 @@ export function ProjectsSection() {
       company: 'Decentralized Marketplace',
       role: 'Full-Stack Developer',
       type: 'blockchain',
-      typeIcon: BlockchainIcon,
+      typeIcon: 'BlockchainIcon', // This will cause an error as BlockchainIcon is removed
       typeColor: 'from-orange-500 to-red-500',
       technologies: ['NextJS (ReactJS)', 'JavaScript', 'TypeScript', 'NodeJS', 'HTML5', 'CSS3', 'EtherJS', 'Wagmi'],
       achievements: [
@@ -127,7 +116,7 @@ export function ProjectsSection() {
       company: 'Crypto Exchange',
       role: 'Full-Stack Developer',
       type: 'web',
-      typeIcon: WebIcon,
+      typeIcon: 'WebIcon', // This will cause an error as WebIcon is removed
       typeColor: 'from-indigo-500 to-purple-500',
       technologies: ['NextJS', 'ReactJS', 'JavaScript', 'TypeScript', 'NodeJS', 'HTML5', 'CSS3', 'SEO', 'AWS', 'Docker', 'WebSocket', 'REST APIs', 'Payment-Gateway SDKs'],
       achievements: [
@@ -150,6 +139,13 @@ export function ProjectsSection() {
       case 'web': return 'Web Platform';
       default: return 'Project';
     }
+  };
+
+  // Add a mapping for typeIcon
+  const typeIconMap = {
+    web: Monitor,
+    mobile: Smartphone,
+    blockchain: Database,
   };
 
   return (
@@ -344,7 +340,10 @@ export function ProjectsSection() {
                         whileHover={{ rotate: 2, scale: 1.05 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <project.typeIcon className="h-4 w-4 text-white" />
+                        {/* This will cause an error as project.typeIcon is not a valid lucide-react icon */}
+                        {typeIconMap[project.type as keyof typeof typeIconMap] && (
+                          React.createElement(typeIconMap[project.type as keyof typeof typeIconMap], { className: "h-4 w-4 text-white" })
+                        )}
                       </motion.div>
                       <span className="text-xs font-medium text-muted-foreground bg-muted/50 px-2 py-1 rounded-full">
                         {getTypeLabel(project.type)}

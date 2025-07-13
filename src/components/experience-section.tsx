@@ -15,18 +15,12 @@
  */
 import * as motion from "motion/react-client";
 import {
-  Calendar,
-  MapPin,
-  Users,
-  Code,
-  Database,
-  Globe,
-  Monitor,
   Building2,
-  Rocket,
   Cpu,
+  Database,
+  ChevronRight,
   TrendingUp,
-  ChevronRight
+  Monitor
 } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -82,7 +76,7 @@ export function ExperienceSection() {
       company: 'Digital Drops',
       duration: 'May 2019 – April 2022',
       type: 'web',
-      typeIcon: Globe,
+      typeIcon: Monitor,
       typeColor: 'from-green-500 to-emerald-500',
       technologies: ['HTML5', 'CSS3', 'JavaScript', 'React.js', 'Angular', 'REST APIs', 'Web3', 'Git', 'Cross-browser Testing', 'Performance Optimization'],
       highlights: [
