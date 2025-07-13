@@ -3,8 +3,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Funnel_Display, Albert_Sans } from 'next/font/google';
 import { FloatingNav } from "@/components/ui/floating-nav";
-import { HomeIcon, PencilIcon, GraduationCapIcon, CalendarIcon, BriefcaseIcon } from "lucide-react";
-import { MailIcon } from "lucide-react";
 import { navItems } from "@/components/common/nav-items";
 
 const funnel_display = Funnel_Display({
