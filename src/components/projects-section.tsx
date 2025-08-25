@@ -34,6 +34,25 @@ import {
 
 export function ProjectsSection() {
   const projects = [
+
+    {
+      id: 'greenai',
+      title: 'GreenAI',
+      company: 'GreenAI',
+      role: 'Full-Stack Python Developer',
+      type: 'saaS',
+      typeIcon: 'DatabaseIcon',
+      typeColor: 'from-green-400 to-green-600',
+      technologies: ['Python','PyMuPDF','Shapely','Tesseract','OpenAI API','Node.js','Express','Redis','MongoDB','Docker','Azure Pipelines','ReactJS','NextJS'],
+      achievements: [
+        'Automated parsing of architectural drawings, HVAC schedules, and IAQ documentation using OCR and spatial libraries',
+        'Implemented AI-driven data extraction pipeline with OpenAI API for text and tables',
+        'Built a rule-based engine for LEED credit calculation across v4, v4.1, and v5'
+      ],
+      impact: 'Shortened certification timelines and reduced manual effort',
+      users: 'Developers, contractors, sustainability consultants, building owners',
+      confidential: true
+    },
     {
       id: 'dapp-confidential',
       title: 'DAPP — [Name Confidential]',
@@ -73,8 +92,8 @@ export function ProjectsSection() {
       confidential: false
     },
     {
-      id: 'meta1-fluher',
-      title: 'Meta1 — Fluher App',
+      id: 'meta1-fluer',
+      title: 'Meta1 — Fluer App',
       company: 'Meta1',
       role: 'Flutter Developer',
       type: 'mobile',
@@ -129,7 +148,7 @@ export function ProjectsSection() {
       impact: 'Real-time trading platform',
       users: 'Crypto traders',
       confidential: false
-    }
+    },
   ];
 
   const getTypeLabel = (type: string) => {
