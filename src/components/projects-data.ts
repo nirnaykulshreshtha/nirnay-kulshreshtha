@@ -5,9 +5,9 @@ export const projects = [
     company: 'GreenAI',
     role: 'Full-Stack Python Developer',
     type: 'saaS',
-    typeIcon: 'DatabaseIcon',
+    typeIcon: 'Database',
     typeColor: 'from-green-400 to-green-600',
-    technologies: ['Python','PyMuPDF','Shapely','Tesseract','OpenAI API','Node.js','Express','Redis','MongoDB','Docker','Azure Pipelines','ReactJS','NextJS'],
+    technologies: ['Python','PyMuPDF','ReportLab', 'WeasyPrint','OpenAI API','Node.js','Express','Redis','MongoDB','Docker','Azure Pipelines','ReactJS','NextJS'],
     achievements: [
       'Automated parsing of architectural drawings, HVAC schedules, and IAQ documentation using OCR and spatial libraries',
       'Implemented AI-driven data extraction pipeline with OpenAI API for text and tables',
