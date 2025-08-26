@@ -57,7 +57,7 @@ export const projects = [
   },
   {
     id: 'meta1-fluer',
-    title: 'Meta1 — Fluer App',
+    title: 'Meta1 — Flutter App',
     company: 'Meta1',
     role: 'Flutter Developer',
     type: 'mobile',

@@ -5,6 +5,9 @@ import { EducationSection } from '@/components/education-section';
 import { ExperienceSection } from '@/components/experience-section';
 import { ProjectsSection } from '@/components/projects-section';
 import { ContactFormSection } from '@/components/contact-form-section';
+import ProjectsMasterDetail from "@/components/projects-master-detail";
+
+
 import { Footer } from '@/components/footer';
 
 /**
@@ -53,6 +56,13 @@ export default function Home() {
 				<section id="projects">
 					<ProjectsSection />
 				</section>
+
+				{/* Projects Master Detail section */}
+				<section id="projects-master-detail">
+					<ProjectsMasterDetail />
+				</section>
+
+
 
 				{/* Contact Form section */}
 				<section id="contact">

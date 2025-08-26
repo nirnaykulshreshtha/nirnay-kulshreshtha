@@ -291,8 +291,7 @@ html {
 
 /* Enhanced focus styles */
 *:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
+  outline: -webkit-focus-ring-color auto 1px;
 }
 
 /* Glass morphism effect */
