@@ -30,7 +30,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -88,11 +88,16 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     },
     ref,
   ) => {
-    // Responsive icon sizing
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    const finalIconSize = iconSize ?? (isMobile ? MOBILE_SIZE : DEFAULT_SIZE);
-    const finalMagnification = iconMagnification ?? (isMobile ? MOBILE_MAGNIFICATION : DEFAULT_MAGNIFICATION);
-    const finalDistance = iconDistance ?? (isMobile ? MOBILE_DISTANCE : DEFAULT_DISTANCE);
+    const [finalIconSize, setFinalIconSize] = useState<number>(iconSize ?? DEFAULT_SIZE);
+    const [finalMagnification, setFinalMagnification] = useState<number>(iconMagnification ?? DEFAULT_MAGNIFICATION);
+    const [finalDistance, setFinalDistance] = useState<number>(iconDistance ?? DEFAULT_DISTANCE);
+
+    useEffect(() => {
+      const mobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      setFinalIconSize(iconSize ?? (mobile ? MOBILE_SIZE : DEFAULT_SIZE));
+      setFinalMagnification(iconMagnification ?? (mobile ? MOBILE_MAGNIFICATION : DEFAULT_MAGNIFICATION));
+      setFinalDistance(iconDistance ?? (mobile ? MOBILE_DISTANCE : DEFAULT_DISTANCE));
+    }, [iconSize, iconMagnification, iconDistance]);
 
     const mouseX = useMotionValue(Infinity);
 
