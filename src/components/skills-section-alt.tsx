@@ -14,66 +14,10 @@
  * without being distracted by proficiency bars. It also works well for mobile.
  */
 import * as motion from "motion/react-client";
-import { Brain, Server, Smartphone, Monitor, Cloud, Shield, Code } from 'lucide-react';
+import { Code } from 'lucide-react';
+import { skillCategories } from '@/components/skills-data';
 
 export function SkillsSectionAlt() {
-  const skillCategories = [
-    {
-      id: 'frontend',
-      title: 'Frontend',
-      icon: Monitor,
-      color: 'from-blue-500 to-cyan-500',
-      skills: [
-        'HTML/CSS', 'JavaScript', 'TypeScript', 'React.js', 'Next.js', 'Redux', 'Context API', 'Material-UI', 'Tailwind CSS', 'Bootstrap', 'SASS/SCSS', 'Shadcn UI', 'Google Lighthouse', 'ARIA roles'
-      ]
-    },
-    {
-      id: 'backend',
-      title: 'Backend',
-      icon: Server,
-      color: 'from-green-500 to-emerald-500',
-      skills: [
-        'Node.js', 'Express.js', 'PHP', 'Laravel', 'Python', 'Flask', 'RESTful APIs', 'Swagger/OpenAPI', 'JWT Authentication', 'OAuth2', 'MySQL', 'MongoDB'
-      ]
-    },
-    {
-      id: 'mobile',
-      title: 'Mobile App',
-      icon: Smartphone,
-      color: 'from-purple-500 to-pink-500',
-      skills: [
-        'Flutter', 'React Native', 'Mobile UI/UX', 'App Store Deployment', 'Play Store Deployment', 'Mobile Testing', 'Cross-platform Development', 'Firebase'
-      ]
-    },
-    {
-      id: 'devops',
-      title: 'DevOps & Deployment',
-      icon: Cloud,
-      color: 'from-indigo-500 to-purple-500',
-      skills: [
-        'GitHub Actions', 'AWS EC2', 'AWS S3', 'AWS RDS', 'AWS Lambda', 'IAM', 'CloudFront', 'S3', 'CloudWatch', 'Sentry', 'CI/CD Pipelines', 'CloudFlare'
-      ]
-    },
-    {
-      id: 'testing',
-      title: 'Testing & Tooling',
-      icon: Shield,
-      color: 'from-orange-500 to-red-500',
-      skills: [
-        'Jest', 'Mocha/Chai', 'ESLint', 'Prettier', 'npm/Yarn', 'Git', 'GitHub', 'GitLab', 'Unit Testing', 'Integration Testing', 'Code Quality'
-      ]
-    },
-    {
-      id: 'ai-ml',
-      title: 'AI/ML Integration',
-      icon: Brain,
-      color: 'from-teal-500 to-blue-500',
-      skills: [
-        'OpenAI API', 'AI Integration', 'Prompt Engineering', 'Chatbot Development', 'AI Content Generation', 'Data Processing'
-      ]
-    }
-  ];
-
   return (
     <section className="py-16 md:py-24 lg:py-32 relative">
       {/* Decorative background */}
@@ -147,26 +91,30 @@ export function SkillsSectionAlt() {
                 </div>
                 				{/* Skills as badges */}
 				<div className="flex flex-wrap gap-2 mt-4">
-					{category.skills.map((skill, skillIndex) => (
-						<motion.span
-							key={skill}
-							className="px-3 py-1.5 rounded-full text-xs font-medium bg-gradient-to-r from-muted/80 to-muted/60 text-foreground/90 border border-muted/30 hover:from-primary/15 hover:to-secondary/15 hover:text-primary hover:border-primary/30 hover:shadow-md transition-all duration-300 shadow-sm cursor-default backdrop-blur-sm"
-							initial={{ opacity: 0, y: 10 }}
-							animate={{ opacity: 1, y: 0 }}
-							transition={{ 
-								duration: 0.5, 
-								delay: 0.6 + categoryIndex * 0.1 + skillIndex * 0.05, 
-								ease: "easeOut" 
-							}}
-							whileHover={{ 
-								scale: 1.05, 
-								y: -2,
-								transition: { duration: 0.2 }
-							}}
-						>
-							{skill}
-						</motion.span>
-					))}
+					{category.skills.map((skill: any, skillIndex: number) => {
+						const skillName = typeof skill === "string" ? skill : skill.name;
+						const years = typeof skill === "string" ? undefined : skill.years;
+						return (
+							<motion.span
+								key={skillName}
+								className="px-3 py-1.5 rounded-full text-xs font-medium bg-gradient-to-r from-muted/80 to-muted/60 text-foreground/90 border border-muted/30 hover:from-primary/15 hover:to-secondary/15 hover:text-primary hover:border-primary/30 hover:shadow-md transition-all duration-300 shadow-sm cursor-default backdrop-blur-sm"
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ 
+									duration: 0.5, 
+									delay: 0.6 + categoryIndex * 0.1 + skillIndex * 0.05, 
+									ease: "easeOut" 
+								}}
+								whileHover={{ 
+									scale: 1.05, 
+									y: -2,
+									transition: { duration: 0.2 }
+								}}
+							>
+								{years ? `${skillName} · ${years}` : skillName}
+							</motion.span>
+						);
+					})}
 				</div>
               </div>
             </motion.div>
