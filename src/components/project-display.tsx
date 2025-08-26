@@ -130,9 +130,21 @@ export default function ProjectDisplay({
               ease: "easeOut"
             }}
           >
-            My Work Portfolio
+            My Creative Journey
           </motion.h2>
           
+          <motion.p
+            className="mb-0 font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.7, 
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+          >
+            Showcasing work across web, mobile, and blockchain. 
+          </motion.p>
           <motion.p
             className="font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -143,8 +155,9 @@ export default function ProjectDisplay({
               ease: [0.25, 0.46, 0.45, 0.94]
             }}
           >
-            A showcase of my key projects across blockchain, mobile, and web development. Each project demonstrates technical expertise and business impact.
+          Each project highlights innovation and impact.
           </motion.p>
+          
         </motion.div>
 
         {/* Render the appropriate component based on variant */}
