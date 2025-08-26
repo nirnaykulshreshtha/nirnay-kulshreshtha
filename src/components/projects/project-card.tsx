@@ -47,7 +47,7 @@ export default function ProjectCard({
       whileHover={{ rotateY: 2, transition: { duration: 0.3 } }}
     >
       <motion.div
-        className="relative p-8 rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl border border-white/10 shadow-xl h-full transform-gpu"
+        className="relative p-4 md:p-8 rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl border border-white/10 shadow-xl h-full transform-gpu"
         style={{ transformStyle: "preserve-3d" }}
         whileHover={{ 
           rotateY: 5, 

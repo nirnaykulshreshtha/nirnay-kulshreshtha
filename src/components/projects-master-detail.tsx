@@ -10,6 +10,8 @@ export default function ProjectsMasterDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
   
   const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const mobileScrollRef = useRef<HTMLDivElement | null>(null);
+  const mobileItemRefs = useRef<Array<HTMLDivElement | null>>([]);
   
   const filtered = useMemo(() => allProjects, []);
   
@@ -52,10 +54,36 @@ export default function ProjectsMasterDetail() {
     }
   }, [activeIndex]);
   
+  const centerMobileItem = useCallback((index: number) => {
+    const container = mobileScrollRef.current;
+    const item = mobileItemRefs.current[index];
+    if (!container || !item) return;
+
+    const containerWidth = container.clientWidth;
+    const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+    let target = itemCenter - containerWidth / 2;
+    const max = container.scrollWidth - container.clientWidth;
+    if (target < 0) target = 0;
+    if (target > max) target = max;
+    container.scrollTo({ left: target, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      const idx = filtered.findIndex((p) => p.id === selectedId);
+      if (idx >= 0) {
+        requestAnimationFrame(() => centerMobileItem(idx));
+      }
+    }
+  }, [selectedId, filtered, centerMobileItem]);
+
   const handleItemClick = useCallback((id: string, index: number) => {
     setSelectedId(id);
     setActiveIndex(index);
-  }, []);
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      requestAnimationFrame(() => centerMobileItem(index));
+    }
+  }, [centerMobileItem]);
   
   const handleKeyDown = useCallback((e: React.KeyboardEvent) => {
     if (!totalProjects) return;
@@ -132,12 +160,13 @@ export default function ProjectsMasterDetail() {
 
           {/* Mobile Project List (Horizontal Scrollable) */}
           <div className="lg:hidden mb-0">
-            <div className="rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl">
-              <div className="flex gap-2 overflow-x-auto py-1 snap-x snap-mandatory [-ms-overflow-style:'none'] [scrollbar-width:'none'] [&::-webkit-scrollbar]:hidden">
+            <div className="rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl">
+              <div ref={mobileScrollRef} className="flex gap-2 overflow-x-auto p-1 snap-x snap-mandatory [-ms-overflow-style:'none'] [scrollbar-width:'none'] [&::-webkit-scrollbar]:hidden [WebkitOverflowScrolling:'touch']">
                 {filtered.map((project, index) => (
                   <div
                     key={project.id}
-                    className={`flex-shrink-0 px-3 py-1.5 rounded-full border snap-start transition-all duration-200 cursor-pointer ${
+                    ref={(el) => { mobileItemRefs.current[index] = el }}
+                    className={`flex-shrink-0 px-3 py-1.5 rounded-full border snap-center transition-all duration-200 cursor-pointer ${
                       selectedId === project.id
                         ? 'bg-gradient-to-r from-primary/20 to-primary/10 border-primary/40 scale-105'
                         : 'bg-gradient-to-r from-background/60 to-background/40 border-white/10 hover:from-accent/20 hover:to-accent/10 hover:border-accent/20'
