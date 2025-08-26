@@ -136,7 +136,7 @@ export function EducationSection() {
           {education.map((edu, index) => (
             <motion.div
               key={edu.id}
-              className="relative mb-12 pl-8"
+              className="relative mb-10 pl-8"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ 
@@ -161,8 +161,8 @@ export function EducationSection() {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
-                <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500">
-                  <CardContent className="px-6">
+                <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500 py-2">
+                  <CardContent className="px-0 md:px-6">
                     {/* Header Section */}
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
                       <div className="flex-1">

@@ -230,8 +230,8 @@ export function ExperienceSection() {
               </motion.h5>
 
               {/* Content Card */}
-              <Card className="my-5 border-none shadow-none">
-                <CardContent className="px-6">
+              <Card className="my-5 border-none shadow-none bg-transparent md:bg-card">
+                <CardContent className="px-0 md:px-6 bg-transparent">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
