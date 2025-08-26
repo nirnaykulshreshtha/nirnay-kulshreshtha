@@ -102,9 +102,8 @@ export default function ProjectsMasterDetail() {
   }
   
   return (
-    <section className="py-16 md:py-24 lg:py-32">
-      <div className="px-4 md:px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <div className="container relative">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           <div className="lg:col-span-4">
             <div className="rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl">
               <div
@@ -134,7 +133,6 @@ export default function ProjectsMasterDetail() {
           </div>
         </div>
       </div>
-    </section>
   );
 }
 
