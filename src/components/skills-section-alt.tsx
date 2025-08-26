@@ -15,7 +15,7 @@
  */
 import * as motion from "motion/react-client";
 import { Code } from 'lucide-react';
-import { skillCategories } from '@/components/skills-data';
+import { skillCategories, Skill, SkillCategory } from '@/components/skills-data';
 
 export function SkillsSectionAlt() {
   return (
@@ -61,7 +61,7 @@ export function SkillsSectionAlt() {
         </motion.div>
         				{/* Skills Grid */}
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-					{skillCategories.map((category, categoryIndex) => (
+					{skillCategories.map((category: SkillCategory, categoryIndex: number) => (
             <motion.div
               key={category.id}
               className="group relative"
@@ -91,7 +91,7 @@ export function SkillsSectionAlt() {
                 </div>
                 				{/* Skills as badges */}
 				<div className="flex flex-wrap gap-2 mt-4">
-					{category.skills.map((skill: any, skillIndex: number) => {
+					{category.skills.map((skill: Skill, skillIndex: number) => {
 						const skillName = typeof skill === "string" ? skill : skill.name;
 						const years = typeof skill === "string" ? undefined : skill.years;
 						return (
