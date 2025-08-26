@@ -161,7 +161,7 @@ export function EducationSection() {
                 whileHover={{ y: -5 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
-                <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl hover:shadow-2xl transition-all duration-500 py-2">
+                <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-none hover:shadow-none transition-all duration-500 py-2">
                   <CardContent className="px-0 md:px-6">
                     {/* Header Section */}
                     <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
