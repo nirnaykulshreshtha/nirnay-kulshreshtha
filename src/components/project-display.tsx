@@ -9,18 +9,20 @@ import ProjectsMasterDetail from "./projects-master-detail";
 interface ProjectDisplayProps {
   variant: 'section' | 'master-detail';
   className?: string;
+  showTitle?: boolean;
 }
 
 export default function ProjectDisplay({ 
   variant, 
-  className = "" 
+  className = "",
+  showTitle = true
 }: ProjectDisplayProps) {
   return (
     <section className={`py-16 md:py-24 lg:py-32 relative overflow-hidden ${className}`}>
       {/* Enhanced decorative background with parallax - desktop only */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
         <motion.div 
-          className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl transform-gpu [will-change:transform,opacity]"
           animate={{ 
             y: [0, -10, 0],
             scale: [1, 1.05, 1]
@@ -32,7 +34,7 @@ export default function ProjectDisplay({
           }}
         />
         <motion.div 
-          className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/10 rounded-full blur-3xl transform-gpu [will-change:transform,opacity]"
           animate={{ 
             y: [0, 10, 0],
             scale: [1, 0.95, 1]
@@ -45,7 +47,7 @@ export default function ProjectDisplay({
           }}
         />
         <motion.div 
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl"
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-accent/5 rounded-full blur-3xl transform-gpu [will-change:transform,opacity]"
           animate={{ 
             rotate: [0, 360],
             scale: [1, 1.1, 1]
@@ -58,7 +60,7 @@ export default function ProjectDisplay({
         />
         {/* Floating sparkles - desktop only */}
         <motion.div
-          className="absolute top-1/4 right-1/4"
+          className="absolute top-1/4 right-1/4 transform-gpu [will-change:transform,opacity]"
           animate={{ 
             y: [0, -15, 0],
             opacity: [0.3, 1, 0.3],
@@ -73,7 +75,7 @@ export default function ProjectDisplay({
           <Sparkles className="h-6 w-6 text-primary/30" />
         </motion.div>
         <motion.div
-          className="absolute bottom-1/3 left-1/3"
+          className="absolute bottom-1/3 left-1/3 transform-gpu [will-change:transform,opacity]"
           animate={{ 
             y: [0, 15, 0],
             opacity: [0.2, 0.8, 0.2],
@@ -92,8 +94,9 @@ export default function ProjectDisplay({
       
       <div className="container relative">
         {/* Title Section - Always visible for both variants */}
+        {showTitle && (
         <motion.div
-          className="text-center mb-16 space-y-6"
+          className="text-center mb-16 space-y-6 transform-gpu [will-change:transform,opacity]"
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ 
@@ -103,7 +106,7 @@ export default function ProjectDisplay({
           }}
         >
           <motion.div
-            className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
@@ -121,7 +124,7 @@ export default function ProjectDisplay({
           </motion.div>
           
           <motion.h2
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
@@ -134,7 +137,7 @@ export default function ProjectDisplay({
           </motion.h2>
           
           <motion.p
-            className="mb-0 font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            className="mb-0 font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
@@ -146,7 +149,7 @@ export default function ProjectDisplay({
             Showcasing work across web, mobile, and blockchain. 
           </motion.p>
           <motion.p
-            className="font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            className="font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ 
@@ -159,6 +162,7 @@ export default function ProjectDisplay({
           </motion.p>
           
         </motion.div>
+        )}
 
         {/* Render the appropriate component based on variant */}
         {variant === 'section' ? (

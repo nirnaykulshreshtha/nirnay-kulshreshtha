@@ -3,8 +3,6 @@
 import * as motion from "motion/react-client";
 import React from "react";
 import {
-  Briefcase,
-  Sparkles
 } from 'lucide-react';
 import { projects } from "./projects-data";
 import { ProjectCard } from "./projects";
@@ -18,7 +16,7 @@ export function ProjectsSection() {
           {projects.map((project, projectIndex) => (
             <motion.div
               key={project.id}
-              className="group relative md:perspective-1000"
+              className="group relative md:perspective-1000 transform-gpu [will-change:transform,opacity]"
               initial={{ opacity: 0, y: 50, rotateX: -15, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
               transition={{ 

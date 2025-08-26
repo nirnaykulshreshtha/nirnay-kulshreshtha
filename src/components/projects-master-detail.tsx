@@ -10,6 +10,7 @@ export default function ProjectsMasterDetail() {
   const [activeIndex, setActiveIndex] = useState(0);
   
   const itemRefs = useRef<Array<HTMLLIElement | null>>([]);
+  const listContainerRef = useRef<HTMLDivElement | null>(null);
   const mobileScrollRef = useRef<HTMLDivElement | null>(null);
   const mobileItemRefs = useRef<Array<HTMLDivElement | null>>([]);
   
@@ -48,9 +49,13 @@ export default function ProjectsMasterDetail() {
   }, [selectedId]);
   
   useEffect(() => {
+    const container = listContainerRef.current;
     const el = itemRefs.current[activeIndex];
-    if (el) {
-      el.scrollIntoView({ block: "nearest" });
+    if (container && el) {
+      const containerRect = container.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const targetTop = container.scrollTop + (elRect.top - containerRect.top) - 8;
+      container.scrollTo({ top: targetTop, behavior: 'smooth' });
     }
   }, [activeIndex]);
   
@@ -137,6 +142,7 @@ export default function ProjectsMasterDetail() {
           <div className="hidden lg:block lg:col-span-4">
             <div className="rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl shadow-xl">
               <div
+                ref={listContainerRef}
                 className="max-h-[70%] overflow-y-auto pr-1 focus:outline-none rounded-xl"
                 tabIndex={0}
                 onKeyDown={handleKeyDown}

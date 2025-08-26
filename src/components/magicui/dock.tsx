@@ -100,6 +100,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     }, [iconSize, iconMagnification, iconDistance]);
 
     const mouseX = useMotionValue(Infinity);
+    const frameRef = useRef<number | null>(null);
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
@@ -122,10 +123,18 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
     return (
       <motion.div
         ref={ref}
-        onMouseMove={(e) => mouseX.set(e.pageX)}
-        onMouseLeave={() => mouseX.set(Infinity)}
+        onPointerMove={(e) => {
+          const pageX = e.pageX;
+          if (frameRef.current == null) {
+            frameRef.current = requestAnimationFrame(() => {
+              mouseX.set(pageX);
+              frameRef.current = null;
+            });
+          }
+        }}
+        onPointerLeave={() => mouseX.set(Infinity)}
         {...props}
-        className={cn(dockVariants({ className }), {
+        className={cn(dockVariants({ className }), "transform-gpu [will-change:transform]", {
           "items-start": direction === "top",
           "items-center": direction === "middle",
           "items-end": direction === "bottom",
@@ -162,10 +171,24 @@ const DockIcon = ({
   const ref = useRef<HTMLDivElement>(null);
   const padding = Math.max(6, size * 0.2);
   const defaultMouseX = useMotionValue(Infinity);
+  const centerX = useMotionValue(0);
+  useEffect(() => {
+    const updateCenter = () => {
+      const bounds = ref.current?.getBoundingClientRect();
+      const x = (bounds?.x ?? 0) + (bounds?.width ?? 0) / 2 + window.scrollX;
+      centerX.set(x);
+    };
+    updateCenter();
+    window.addEventListener('resize', updateCenter);
+    window.addEventListener('scroll', updateCenter, { passive: true });
+    return () => {
+      window.removeEventListener('resize', updateCenter);
+      window.removeEventListener('scroll', updateCenter);
+    };
+  }, [centerX]);
 
   const distanceCalc = useTransform(mouseX ?? defaultMouseX, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
-    return val - bounds.x - bounds.width / 2;
+    return val - centerX.get();
   });
 
   const sizeTransform = useTransform(
@@ -185,7 +208,7 @@ const DockIcon = ({
       ref={ref}
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
-        "flex aspect-square cursor-pointer items-center justify-center rounded-full",
+        "flex aspect-square cursor-pointer items-center justify-center rounded-full transform-gpu [will-change:transform]",
         className,
       )}
       {...props}

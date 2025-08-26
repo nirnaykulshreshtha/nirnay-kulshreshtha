@@ -134,13 +134,13 @@ export function ExperienceSection() {
       <div className="container relative">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-16 space-y-6"
+          className="text-center mb-16 space-y-6 transform-gpu [will-change:transform,opacity]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.div
-            className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -150,7 +150,7 @@ export function ExperienceSection() {
           </motion.div>
           
           <motion.h2
-            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent"
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text text-transparent transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -159,7 +159,7 @@ export function ExperienceSection() {
           </motion.h2>
           
           <motion.p
-            className="font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            className="font-text text-muted-foreground text-lg md:text-xl max-w-3xl mx-auto leading-relaxed transform-gpu [will-change:transform,opacity]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
@@ -178,7 +178,7 @@ export function ExperienceSection() {
           {experiences.map((experience, index) => (
             <motion.div
               key={experience.id}
-              className="relative mb-10 pl-8"
+              className="relative mb-10 pl-8 transform-gpu [will-change:transform,opacity]"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ 
@@ -189,7 +189,7 @@ export function ExperienceSection() {
             >
               {/* Timeline Dot */}
               <motion.div 
-                className={`absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full bg-gradient-to-br ${experience.typeColor} shadow-lg border-2 border-background`}
+                className={`absolute left-0 top-3.5 flex size-4 items-center justify-center rounded-full bg-gradient-to-br ${experience.typeColor} shadow-lg border-2 border-background transform-gpu [will-change:transform,opacity]`}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ 

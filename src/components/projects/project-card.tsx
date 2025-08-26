@@ -34,7 +34,7 @@ export default function ProjectCard({
   return (
     <motion.div
       key={project.id}
-      className={`group relative md:perspective-1000 ${className}`}
+      className={`group relative md:perspective-1000 transform-gpu [will-change:transform] ${className}`}
       initial={{ opacity: 0, y: 50, rotateX: -15, scale: 0.95 }}
       animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
       transition={{ 
@@ -47,7 +47,7 @@ export default function ProjectCard({
       whileHover={{ rotateY: 2, transition: { duration: 0.3 } }}
     >
       <motion.div
-        className="relative p-4 md:p-8 rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl border border-white/10 shadow-xl h-full transform-gpu"
+        className="relative p-4 md:p-8 rounded-2xl bg-gradient-to-br from-background/80 via-background/60 to-background/40 backdrop-blur-xl border border-white/10 shadow-xl h-full transform-gpu [will-change:transform]"
         style={{ transformStyle: "preserve-3d" }}
         whileHover={{ 
           rotateY: 5, 
@@ -57,10 +57,6 @@ export default function ProjectCard({
             ease: [0.25, 0.46, 0.45, 0.94] 
           } 
         }}
-        drag={false}
-        dragConstraints={{ left: -10, right: 10, top: -10, bottom: 10 }}
-        dragElastic={0.1}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
       >
         <ProjectHeader
           title={project.title}

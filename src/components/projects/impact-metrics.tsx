@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import * as motion from "motion/react-client";
 import { TrendingUp, Users } from "lucide-react";
 
 interface ImpactMetricsProps {

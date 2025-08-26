@@ -15,13 +15,6 @@ interface ProjectHeaderProps {
   className?: string;
 }
 
-const typeIconMap = {
-  web: "Monitor",
-  mobile: "Smartphone", 
-  blockchain: "Database",
-  saas: "Database",
-  SaaS: "Database",
-} as const;
 
 const getTypeLabel = (type: string): string => {
   const labels = {

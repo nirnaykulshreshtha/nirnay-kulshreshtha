@@ -1,11 +1,13 @@
 import { IntroSection } from '@/components/intro-section';
 import { ProfileSection } from '@/components/profile-section';
-import { SkillsSectionAlt } from '@/components/skills-section-alt';
-import { EducationSection } from '@/components/education-section';
-import { ExperienceSection } from '@/components/experience-section';
-import { ContactFormSection } from '@/components/contact-form-section';
-import ProjectDisplay from "@/components/project-display";
-import { Footer } from '@/components/footer';
+import dynamic from 'next/dynamic';
+
+const SkillsSectionAlt = dynamic(() => import('@/components/skills-section-alt').then(m => m.SkillsSectionAlt));
+const EducationSection = dynamic(() => import('@/components/education-section').then(m => m.EducationSection));
+const ExperienceSection = dynamic(() => import('@/components/experience-section').then(m => m.ExperienceSection));
+const ProjectDisplay = dynamic(() => import('@/components/project-display'));
+const ContactFormSection = dynamic(() => import('@/components/contact-form-section').then(m => m.ContactFormSection));
+const Footer = dynamic(() => import('@/components/footer').then(m => m.Footer));
 
 /**
  * Home page component showcasing Nirnay's portfolio
